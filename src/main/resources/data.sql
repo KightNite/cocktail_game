@@ -1,0 +1,1 @@
+insert into USERS (name,score) values ('TESTUSER',100);
