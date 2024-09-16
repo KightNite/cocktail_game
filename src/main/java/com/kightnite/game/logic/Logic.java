@@ -7,12 +7,12 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.HashSet;
 
 public class Logic {
-    Menu menu;
-    int score = 0;
+    private final Menu menu;
+    private int score = 0;
     public Cocktail cocktail;
-    HashSet<Integer> guessedDrinks = new HashSet<>();
-    int round = 0;
-    int attempts = 5;
+    private HashSet<Integer> guessedDrinks = new HashSet<>();
+    private int round = 0;
+    private int attempts = 5;
 
     public Logic(Menu menu) {
         this.menu = menu;
@@ -34,7 +34,6 @@ public class Logic {
 
     private void GameRound() {
         this.round += 1;
-        System.out.println("Getting drink ready...");
         this.cocktail = getCocktail();
 
         if (this.cocktail == null){

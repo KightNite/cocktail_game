@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.Random;
 
 public class GuessWord {
-    Cocktail cocktail;
-    int length;
-    HashSet<Integer> revealedLetters = new HashSet<>();
+    private final Cocktail cocktail;
+    public int length;
+    public HashSet<Integer> revealedLetters = new HashSet<>();
     // Number of letters not counting the spaces
-    int letterCount;
+    public int letterCount;
 
 
 

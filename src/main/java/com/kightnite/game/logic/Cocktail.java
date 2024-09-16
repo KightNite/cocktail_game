@@ -2,21 +2,23 @@ package com.kightnite.game.logic;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.Setter;
 
 public class Cocktail {
     @JsonProperty("strDrink")
     @Getter
-    String name;
+    @Setter
+    public String name;
     @JsonProperty("idDrink")
-    int id;
+    public int id;
     @JsonProperty("strInstructions")
-    String instructions;
+    public String instructions;
 
     @JsonProperty("strAlcoholic")
-    String alcoholic;
+    public String alcoholic;
     @JsonProperty("strCategory")
-    String category;
+    public String category;
     @JsonProperty("strGlass")
-    String glass;
+    public String glass;
 }
 
