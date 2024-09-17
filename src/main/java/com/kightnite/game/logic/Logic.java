@@ -19,12 +19,12 @@ public class Logic {
     }
 
 
-    public int StartGame() {
+    public int startGame() {
         System.out.println("-----GAME START-----");
 
         do {
             attempts = 5;
-            GameRound();
+            startRound();
         } while (attempts >= 1);
 
         System.out.println("GAME OVER | The drink was: " + cocktail.name);
@@ -32,7 +32,7 @@ public class Logic {
         return score;
     }
 
-    private void GameRound() {
+    private void startRound() {
         this.round += 1;
         this.cocktail = getCocktail();
 
@@ -45,18 +45,18 @@ public class Logic {
         GuessWord word = new GuessWord(cocktail);
 
         do {
-            PrintDrinkInfo(word);
+            printDrinkInfo(word);
 
-            String input = menu.GetInput();
+            String input = menu.getInput();
 
             if (input.equalsIgnoreCase(cocktail.name)) {
-                score += CalculateScore();
+                score += calculateScore();
                 System.out.println("----------------\nCORRECT!!\n----------------");
                 break;
             } else {
                 System.out.println("----------------\nWRONG!!!\n----------------");
                 attempts -= 1;
-                word.RevealLetters();
+                word.revealLetters();
             }
 
         } while (attempts >= 1);
@@ -67,7 +67,7 @@ public class Logic {
         Cocktail randomCocktail;
         do {
             System.out.println("Picking drink...");
-            randomCocktail = ApiController.GetRandomCocktail();
+            randomCocktail = ApiController.getRandomCocktail();
 
             if (randomCocktail == null){
                 System.out.println("Failed to get drink. Press Enter to try again.");
@@ -93,14 +93,14 @@ public class Logic {
         return randomCocktail;
     }
 
-    private int CalculateScore() {
+    private int calculateScore() {
         // The longer the streak the more point you get per guess
         int scoreMultiplier = Math.max(round / 5, 1);
 
         return 10 * attempts * scoreMultiplier;
     }
 
-    private void PrintDrinkInfo(GuessWord word) {
+    private void printDrinkInfo(GuessWord word) {
         // Print Common info
         System.out.println("Guess this drink!");
         System.out.println("Player: " + menu.selectedUser.getName() + " | HIGH SCORE: " + menu.selectedUser.getScore());

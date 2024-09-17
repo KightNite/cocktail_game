@@ -1,7 +1,7 @@
 package com.kightnite;
 
-import com.kightnite.game.logic.Logic;
-import com.kightnite.game.menu.Menu;
+import com.kightnite.game.api.ApiController;
+import com.kightnite.game.logic.Cocktail;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,12 +9,11 @@ import org.junit.jupiter.api.Test;
 public class LogicUnitTests {
 
     @Test
-    public void GetCocktailFromApi() {
-        Logic logic = new Logic(new Menu());
+    public void getCocktailFromApi() {
 
-        logic.getCocktail();
+        Cocktail cocktail = ApiController.getRandomCocktail();
 
-        Assertions.assertNotNull(logic.cocktail);
+        Assertions.assertNotNull(cocktail);
     }
 
 

@@ -16,11 +16,11 @@ public class GuessWord {
     public GuessWord(Cocktail cocktail){
         this.cocktail = cocktail;
         length = cocktail.name.length();
-        RevealSpaces();
+        revealSpacesAndSymbols();
         letterCount = cocktail.name.length() - revealedLetters.size();
     }
 
-    public void RevealLetters() {
+    public void revealLetters() {
         // Set number of letters revealed
         int revealNum = letterCount / 5;
         if (revealNum == 0) revealNum = 1;
@@ -50,12 +50,10 @@ public class GuessWord {
     }
 
     // Reveal spaces, dots and dashes in the name.
-    private void RevealSpaces() {
-
+    private void revealSpacesAndSymbols() {
 
         for (int i = 0; i < length; i++) {
             char c = cocktail.name.charAt(i);
-            // c == ' ' || c == '-' || c == '.' || c == '\'' || c == '/'
             if (!Character.isLetter(c) && !Character.isDigit(c)) {
                 revealedLetters.add(i);
             }

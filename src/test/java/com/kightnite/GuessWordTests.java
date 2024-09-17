@@ -10,7 +10,7 @@ public class GuessWordTests {
     GuessWord guessWord;
 
     @Test
-    public void TestSpacesAndSymbolsAreRevealed() {
+    public void testSpacesAndSymbolsAreRevealed() {
         // Case 1
         Cocktail cocktail = new Cocktail();
         cocktail.setName("Te st");
@@ -39,7 +39,7 @@ public class GuessWordTests {
     }
 
     @Test
-    public void TestNumberOfLettersAreRevealedBasedOnWordLength() {
+    public void testNumberOfLettersAreRevealedBasedOnWordLength() {
 
         // Case 1 - reveals 1 letter
         Cocktail cocktail = new Cocktail();
@@ -48,7 +48,7 @@ public class GuessWordTests {
 
         Assertions.assertEquals(guessWord.revealedLetters.size(), 0);
 
-        guessWord.RevealLetters();
+        guessWord.revealLetters();
         Assertions.assertEquals(guessWord.revealedLetters.size(), 1);
 
         // Case 2 - reveals 2 letters
@@ -57,12 +57,12 @@ public class GuessWordTests {
 
         Assertions.assertEquals(guessWord.revealedLetters.size(), 0);
 
-        guessWord.RevealLetters();
+        guessWord.revealLetters();
         Assertions.assertEquals(guessWord.revealedLetters.size(), 2);
     }
 
     @Test
-    public void RevealLettersDoesNotRevealLastLetterTest() {
+    public void revealLettersDoesNotRevealLastLetterTest() {
 
         // Case 1 - reveals 1 letter
         Cocktail cocktail = new Cocktail();
@@ -71,7 +71,7 @@ public class GuessWordTests {
 
         Assertions.assertEquals(guessWord.revealedLetters.size(), 0);
 
-        guessWord.RevealLetters();
+        guessWord.revealLetters();
         Assertions.assertEquals(guessWord.revealedLetters.size(), 1);
 
         // Case 2 - reveals 2 letters
@@ -80,7 +80,7 @@ public class GuessWordTests {
 
         Assertions.assertEquals(guessWord.revealedLetters.size(), 0);
 
-        guessWord.RevealLetters();
+        guessWord.revealLetters();
         Assertions.assertEquals(guessWord.revealedLetters.size(), 2);
     }
 }

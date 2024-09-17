@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class ApiController {
-    public static Cocktail GetRandomCocktail(){
+    public static Cocktail getRandomCocktail(){
 
         try {
 //            URL url = new URL("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=12768");

@@ -31,11 +31,11 @@ public class Menu {
             System.out.println("1. Play");
             System.out.println("2. Exit\n");
 
-            selection = this.GetIntInput();
+            selection = this.getIntInput();
 
             switch (selection) {
                 case 1:
-                    PlayMenu();
+                    selectPlay();
                     continue;
                 case 2:
                     break menu;
@@ -46,7 +46,7 @@ public class Menu {
         }
     }
 
-    public String GetInput() {
+    public String getInput() {
         try {
             return scanner.nextLine();
         } catch (InputMismatchException e) {
@@ -55,7 +55,7 @@ public class Menu {
         }
     }
 
-    public int GetIntInput() {
+    public int getIntInput() {
         try {
             int input = scanner.nextInt();
             scanner.nextLine();
@@ -66,23 +66,23 @@ public class Menu {
         }
     }
 
-    private void PlayMenu() {
+    private void selectPlay() {
 
-        selectedUser = ChoosePlayer();
+        selectedUser = choosePlayer();
 
         Logic gameLogic = new Logic(this);
 
-        int score = gameLogic.StartGame();
+        int score = gameLogic.startGame();
 
         if (selectedUser.getScore() < score) {
             selectedUser.setScore(score);
-            SaveUser(selectedUser);
+            saveUser(selectedUser);
         }
     }
 
-    private User ChoosePlayer() {
+    private User choosePlayer() {
 
-        List<User> users = GetUsersScore();
+        List<User> users = getUsersScore();
 
         System.out.println("-------HIGH SCORES-------");
         int num = 1;
@@ -95,10 +95,10 @@ public class Menu {
         User user;
 
         while (true) {
-            int input = GetIntInput();
+            int input = getIntInput();
 
             if (input == 0) {
-                user = CreateUser();
+                user = createUser();
                 break;
             }
 
@@ -114,20 +114,20 @@ public class Menu {
         return user;
     }
 
-    private List<User> GetUsersScore() {
+    private List<User> getUsersScore() {
         return userRepository.findAll(Sort.by(Sort.Direction.DESC, "score"));
     }
 
-    private User CreateUser() {
+    private User createUser() {
         System.out.println("Enter name: ");
-        String input = GetInput();
+        String input = getInput();
         User user = new User(input, 0);
 
-        SaveUser(user);
+        saveUser(user);
         return user;
     }
 
-    private void SaveUser(User user) {
+    private void saveUser(User user) {
         userRepository.save(user);
     }
 }
